@@ -13,6 +13,7 @@ def auth(request):
     
     if request.method == 'POST':
         data = request.data
-        q = CustomerUser.objects.filter(username = data['username'], password = data['password'])
-        print(q)
-        return Response(status=status.HTTP_200_OK)
+        if CustomerUser.objects.filter(username = data['username'], password = data['password']).count() >= 1:
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
