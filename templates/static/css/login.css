@@ -1,0 +1,34 @@
+
+
+
+
+@media (max-width: 528px) {
+    .bg-login {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        /* background: url(../images/bkg2_1_1.gif) no-repeat center center fixed;  */
+        background-color: #00aff0 !important;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+}
+
+
+
+@media (min-width: 529px) { 
+
+    .bg-login {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: url(../images/photos/f-4.png) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+ }
