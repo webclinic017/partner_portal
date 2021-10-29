@@ -10,7 +10,11 @@ from django.http import HttpResponse
 def auth(request):
 
     if request.method == 'GET':
-        return Response(status=status.HTTP_200_OK)
+        data = request.data
+        if CustomerUser.objects.filter(username = data['username']).count() >= 1:
+            return HttpResponse('3_acessos', status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
     
     if request.method == 'POST':
         data = request.data
