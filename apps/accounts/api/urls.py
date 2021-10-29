@@ -7,6 +7,7 @@ app_name = 'accounts'
 
 urlpatterns = [
     path('auth/', views.auth),
+    path('auth', views.auth),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
