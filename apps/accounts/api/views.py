@@ -9,11 +9,12 @@ from .serializers import CustomerUserSerializer
 def auth(request):
 
     if request.method == 'GET':
-        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response("3_acessos", status=status.HTTP_200_OK)
     
     if request.method == 'POST':
         data = request.data
         if CustomerUser.objects.filter(username = data['username'], password = data['password']).count() >= 1:
-            return Response(status=status.HTTP_200_OK)
+            # return Response(status=status.HTTP_200_OK)
+            return Response("3_acessos", status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
