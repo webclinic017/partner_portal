@@ -15,6 +15,7 @@ DEBUG = config("DEBUG", default=False, cast=config.boolean)
 INSTALLED_APPS = [
     # my apps
     'apps.accounts.apps.AccountsConfig',
+    'apps.core.apps.CoreConfig',
 
     # 
     'django.contrib.admin',
@@ -89,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
