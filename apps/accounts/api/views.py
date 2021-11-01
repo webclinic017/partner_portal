@@ -11,14 +11,14 @@ def auth(request):
 
     if request.method == 'GET':
         
-        if CustomerUser.objects.filter(username = request.GET.get('username')).count() >= 1:
+        if CustomerUser.objects.filter(username__icontains = request.GET.get('username')).count() >= 1:
             return HttpResponse('5_acessos', status=status.HTTP_200_OK)
         else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'POST':
         data = request.data
-        if CustomerUser.objects.filter(username = data['username'], password = data['password']).count() >= 1:
+        if CustomerUser.objects.filter(username__icontains = data['username'], password__icontains = data['password']).count() >= 1:
             return HttpResponse('5_acessos', status=status.HTTP_200_OK)
         else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_404_NOT_FOUND)
