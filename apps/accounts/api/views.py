@@ -10,17 +10,34 @@ from django.http import HttpResponse
 def auth(request):
 
     if request.method == 'GET':
-        
-        if CustomerUser.objects.filter(username__icontains = request.GET.get('username')).count() >= 1:
+
+        try:
+            # adcionar log
+            data = request.data
+            CustomerUser.objects.get(username = data['username'])
             return HttpResponse('5_acessos', status=status.HTTP_200_OK)
-        else:
-            CustomerUser.objects.create(username = 'a', password = 'b')
+        
+        except CustomerUser.MultipleObjectsReturned as e:
+            # adcionar log
+            # tratar clientes de diferentes provedores que possuem mesmo username
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        except CustomerUser.DoesNotExist:
+            # adcionar log
             return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'POST':
-        data = request.data
-        if CustomerUser.objects.filter(username__icontains = data['username'], password__icontains = data['password']).count() >= 1:
+
+        try:
+            # adcionar log
+            data = request.data
+            CustomerUser.objects.get(username = data['username'], password = data['password'])
             return HttpResponse('5_acessos', status=status.HTTP_200_OK)
-        else:
-            CustomerUser.objects.create(username = 'a', password = 'b')
+        
+        except CustomerUser.MultipleObjectsReturned as e:
+            # adcionar log
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        except CustomerUser.DoesNotExist:
+            # adcionar log
             return Response(status=status.HTTP_404_NOT_FOUND)
