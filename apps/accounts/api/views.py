@@ -13,8 +13,7 @@ def auth(request):
 
         try:
             # adcionar log
-            data = request.data
-            CustomerUser.objects.get(username = data['username'])
+            CustomerUser.objects.get(username = request.GET.get('username'))
             return HttpResponse('5_acessos', status=status.HTTP_200_OK)
         
         except CustomerUser.MultipleObjectsReturned as e:
