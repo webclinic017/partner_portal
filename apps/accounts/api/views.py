@@ -40,3 +40,5 @@ def auth(request):
         except CustomerUser.DoesNotExist:
             # adcionar log
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+

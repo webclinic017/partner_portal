@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static widget_tweaks %}
+
+{% block extra_stylesheet %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="bg-dark min-vh-100">
+    
+    <div class="container">
+
+        <div class="row min-vh-100 align-items-center  justify-content-evenly p-3" >
+            
+            <div class="col-sm-12 col-md-6 col-lg-5 pt-30 pb-40">
+
+                <div class="mb-3">
+                    <img src="{% static 'images/brand/logo_white_blue.png' %}" alt="logo" height="40">
+                </div>
+
+                
+                <p class="text-light fw-bold fs-1 mt-40">
+                    Faça seu login na plataforma
+                </p>
+                
+            </div>
+            
+            <div class="col-sm-12 col-md-6 col-lg-5 pt-30 pb-40">
+                
+                <div class="card bg-white border-0 shadow p-3">
+                    
+                    <div class="card-header bg-transparent border-0 pt-10">
+                        <h4 class="text-center">Entre na sua conta</h4>
+                    </div>
+                    <div class="card-body border-0">
+                        
+                        <form method="post" action="{% url 'accounts:login' %}">
+                            {% csrf_token %}
+                            
+                            <div class="form-floating mb-3">
+                                {% render_field form.username class+="form-control form-control-lg " placeholder="Usuário" %}
+                                <label for="floatingInput">Usuário</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                {% render_field form.password class+="form-control form-control-lg " placeholder="Senha" %}
+                                <label for="floatingPassword">Senha</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary btn-lg" >
+                                        Entrar <i class="lni lni-enter"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="next" value="{{ next }}" />
+                            
+                        </form>
+
+                    </div>
+
+                    <div class="card-footer bg-transparent border-0 text-center" hidden>
+
+                        <hr>
+
+                        <p>
+                            <a href="" class="text-decoration-none text-dark">Ainda não sou cliente</a>
+                        </p>
+
+                    </div>
+
+                </div>
+                
+            </div>
+        
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+{% endblock %}

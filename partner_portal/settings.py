@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     # third apps
     'django_extensions',
     'rest_framework',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

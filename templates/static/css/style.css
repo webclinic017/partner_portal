@@ -1,89 +1,11 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-
-html, body {
-    font-family: 'Montserrat', sans-serif !important;
+.bg-g-primary {
+    background: rgb(0,186,240);
+    background: linear-gradient(90deg, rgba(0,186,240,1) 0%, rgba(0,210,240,1) 50%, rgba(0,240,229,1) 100%);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif !important;
-}
-
-p, b, small, span {
-    font-family: 'Montserrat', sans-serif !important;
-}
-
-input, label {
-    font-family: 'Montserrat', sans-serif !important;
-}
-
-
-.min-vh-40 {
-    min-height: 40vh;
-}
-
-.min-vh-45 {
-    min-height: 45vh;
-}
-
-.min-vh-50 {
-    min-height: 50vh;
-}
-
-.min-vh-55 {
-    min-height: 55vh;
-}
-
-.min-vh-60 {
-    min-height: 60vh;
-}
-
-.min-vh-70 {
-    min-height: 70vh;
-}
-
-.min-vh-75 {
-    min-height: 75vh;
-}
-
-
-.min-vh-80 {
-    min-height: 80vh;
-}
-
-
-.border-radius-1 {
-    border-radius: 1rem;
-}
-
-.bg-blue-and-white {
-    background: rgb(0,175,240);
-    background: linear-gradient(180deg, rgba(0,175,240,1) 0%, rgba(0,175,240,1) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-}
-
-
-#snackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background: #000000;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 9000;
-    left: 50%;
-    top: 30px;
-    font-size: 17px;
-    box-shadow: 0 1rem 1rem rgba(47, 53, 47, 0.175)!important;
-}
-
-
-#snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+.bg-g-light {
+    background: rgb(232,244,249);
+    background: linear-gradient(90deg, rgba(232,244,249,1) 0%, rgba(236,236,236,1) 35%, rgba(232,237,237,1) 100%);
 }
