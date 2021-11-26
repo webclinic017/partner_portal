@@ -18,7 +18,7 @@ def auth(request):
             if customer.status == '1':
                 return HttpResponse('5_acessos', status=status.HTTP_200_OK)
             else:
-                return HttpResponse('5_acessos', status=status.HTTP_401_UNAUTHORIZED)
+                return Response(status=status.HTTP_401_UNAUTHORIZED)
         
         except CustomerUser.MultipleObjectsReturned as e:
             # adcionar log
@@ -39,7 +39,7 @@ def auth(request):
             if customer.status == '1':
                 return HttpResponse('5_acessos', status=status.HTTP_200_OK)
             else:
-                return HttpResponse('5_acessos', status=status.HTTP_401_UNAUTHORIZED)
+                return Response(status=status.HTTP_401_UNAUTHORIZED)
 
         except CustomerUser.MultipleObjectsReturned as e:
             # adcionar log
