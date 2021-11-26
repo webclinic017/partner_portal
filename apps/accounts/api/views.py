@@ -5,6 +5,7 @@ from ..models import CustomerUser
 from .serializers import CustomerUserSerializer
 from django.http import HttpResponse
 
+# PRECISO CRIAR A CAPTURA DA QUANTIDADE DE ACESSOS PELO PLANO FORNECIDO PARA PARCEIRO
 
 @api_view(['GET', 'POST'])
 def auth(request):
@@ -13,8 +14,11 @@ def auth(request):
 
         try:
             # adcionar log
-            CustomerUser.objects.get(username = request.GET.get('username'))
-            return HttpResponse('5_acessos', status=status.HTTP_200_OK)
+            customer = CustomerUser.objects.get(username = request.GET.get('username'))
+            if customer.status == '1':
+                return HttpResponse('5_acessos', status=status.HTTP_200_OK)
+            else:
+                return HttpResponse('5_acessos', status=status.HTTP_401_UNAUTHORIZED)
         
         except CustomerUser.MultipleObjectsReturned as e:
             # adcionar log
@@ -30,9 +34,13 @@ def auth(request):
         try:
             # adcionar log
             data = request.data
-            CustomerUser.objects.get(username = data['username'], password = data['password'])
-            return HttpResponse('5_acessos', status=status.HTTP_200_OK)
-        
+
+            customer = CustomerUser.objects.get(username = data['username'], password = data['password'])
+            if customer.status == '1':
+                return HttpResponse('5_acessos', status=status.HTTP_200_OK)
+            else:
+                return HttpResponse('5_acessos', status=status.HTTP_401_UNAUTHORIZED)
+
         except CustomerUser.MultipleObjectsReturned as e:
             # adcionar log
             return Response(status=status.HTTP_404_NOT_FOUND)
