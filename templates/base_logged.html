@@ -8,88 +8,101 @@
         
         <link rel="shortcut icon" href="{% static 'images/brand/favicon.ico' %}" type="image/x-icon">
         <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/snackbar.css' %}">
-        <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
         
-        <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css"> 
+        <link rel="stylesheet" href="{% static 'css/default.css' %}">
+        <link rel="stylesheet" href="{% static 'css/features.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+        <link rel="stylesheet" href="{% static 'css/snackbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="{% static 'icons/fontawesome/css/all.css' %}" rel="stylesheet">
+        <link href="{% static 'icons/lineicons/lineicons.css' %}" rel="stylesheet">
+        
+        <!-- <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">  -->
         {% block extra_stylesheet %}
         {% endblock %}
     </head>
 
-    <body class="bg-dark min-vh-100">
+    <body class="min-vh-100" style="background-color: rgb(18, 18, 20);">
+
+        <header class="shadow">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-xxl p-3">
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img src="{% static 'images/brand/logo_white_blue.png' %}" alt="logo" height="29">
+                    </a>
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            
+                            <li class="nav-item" hidden>
+                                <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% block active_profile %} {% endblock %} "href="{% url 'accounts:profile' %}">Meu perfil</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link  {% block active_customer %} {% endblock %} " href="{% url 'accounts:customeruser_list' %}">Oxente TV</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link  {% block active_monitor_network %} {% endblock %} " href="{% url 'accounts:monitor_network_dashboard' %}">Monitoramento</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="d-flex">
+                            <div class="dropdown ">
+                                <button class="btn btn-default text-white dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                                    <span class="">
+                                        {{ request.user.partneruser.partner.title }}
+                                    </span>
+                                </button>
+                                
+                                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="dropdownMenuLink" style="min-width: 15rem;">
+                                    <li>
+                                        <a class="dropdown-item mb-2" href="{% url 'accounts:profile' %}">
+                                            <small><i class="far fa-user-circle text-primary mr-10"></i></small>
+                                            Meu perfil
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item mb-2" href="https://api.whatsapp.com/send?phone=5589981202727" target="_blank">
+                                            <small><i class="far fa-question-circle text-primary mr-10"></i></small>
+                                            Ajuda
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider mb-2"></li>
+                                    <li>
+                                        <a class="dropdown-item mb-2" href="{% url 'accounts:logout' %}">
+                                            <small><i class="far fa-times-circle text-primary mr-10"></i></small>
+                                            Sair
+                                        </a>
+                                    </li>
+                                </ul>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
 
         <main>
-
-            <header class="sticky-top shadow">
-
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div class="container-xxl p-3">
-                        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        
-                        <a class="navbar-brand" href="{% url 'home' %}">
-                            <img src="{% static 'images/brand/logo_white_blue.png' %}" alt="logo" height="29">
-                        </a>
-
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                            
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'accounts:profile' %}">Perfil</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="d-flex">
-                                <div class="dropdown ">
-                                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
-                                        {{ request.user.first_name }}
-                                    </button>
-                                  
-                                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="dropdownMenuLink" style="min-width: 15rem;">
-                                        <li>
-                                            <a class="dropdown-item mb-2" href="{% url 'accounts:profile' %}">
-                                                <small><i class="far fa-user-circle text-primary mr-10"></i></small>
-                                                Meu perfil
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item mb-2" href="#">
-                                                <small><i class="far fa-question-circle text-primary mr-10"></i></small>
-                                                Ajuda
-                                            </a>
-                                        </li>
-                                        <li><hr class="dropdown-divider mb-2"></li>
-                                        <li>
-                                            <a class="dropdown-item mb-2" href="{% url 'accounts:logout' %}">
-                                                <small><i class="far fa-times-circle text-primary mr-10"></i></small>
-                                                Sair
-                                            </a>
-                                        </li>
-                                    </ul>
-                                  </div>
-                            </form>
-                        </div>
-                    </div>
-                  </nav>
-
-            </header>
-
+            {% block content %}
+            {% endblock %}
         </main>
-
-        {% block content %}
-        {% endblock %}
         
         <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/9dd034f154.js" crossorigin="anonymous"></script>
+        <!-- <script src="https://kit.fontawesome.com/9dd034f154.js" crossorigin="anonymous"></script> -->
+        <script src="{% static 'js/get_cookie.js' %}"></script>
         {% block extra_scrypts %}
         {% endblock %}
     </body>

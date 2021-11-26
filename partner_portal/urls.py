@@ -6,8 +6,8 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('apps.accounts.urls', namespace='accounts')),
-    path('', RedirectView.as_view(url='/accounts/profile/'), name='home'),
+    path('', include('apps.accounts.urls', namespace='accounts')),
+    path('', RedirectView.as_view(url='/profile/'), name='home'),
     path('core/', include('apps.core.urls', namespace='core')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

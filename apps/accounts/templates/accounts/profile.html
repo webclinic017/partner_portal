@@ -4,10 +4,61 @@
 {% block extra_stylesheet %}
 {% endblock %}
 
+{% block active_profile %}active border-bottom border-2 {% endblock %} 
+
 
 {% block content %}
+<div class="container-xl px-4 py-5" id="custom-cards">
+    <!-- <h2 class="text-primary">Títulos</h2> -->
+    <!-- <div class="row align-items-stretch g-4 py-4">
 
+        <div class="col">
 
+            <div class="card text-white bg-dark rounded-5 shadow-lg">
+                <div class="p-4 text-white text-shadow-1">
+                    <h2 class="mb-2 display-6 lh-1 fw-bold">
+                        Títulos em aberto
+                    </h2>
+                </div>
 
+            </div>
+
+        </div>
+
+    </div> -->
+
+    <h2 class="text-primary">Seus serviços</h2>
+
+    <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-4">
+        <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg bg-card-1" >
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                            Acessos à OxenteTV
+                    </h2>
+
+                    <div class="d-flex mb-4">
+                            <a href="{% url 'accounts:customeruser_list' %}" class="btn btn-lg btn-outline-light">Cadastre agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg bg-card-2" >
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Monitorar rede</h2>
+
+                    <div class="d-flex mb-4">
+                            <a href="{% url 'accounts:monitor_network_dashboard' %}" class="btn btn-lg btn-outline-light">
+                                Ver mapas
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}

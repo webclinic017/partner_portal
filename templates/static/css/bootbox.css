@@ -1,0 +1,22 @@
+.bootbox .modal-content {
+    background-color: #212529 !important;
+    color: #fff !important;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    /* padding: 0.5rem !important;
+    pad */
+}
+
+.bootbox .modal-content .modal-footer {
+    border: #212529 !important;
+    padding-bottom: 1.5rem;
+}
+
+
+.bootbox .modal-content .bootbox-close-button {
+    background-color: transparent !important;
+    color: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}

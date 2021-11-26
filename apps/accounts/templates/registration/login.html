@@ -9,7 +9,7 @@
 {% block content %}
 
 
-<div class="bg-dark min-vh-100">
+<div class="min-vh-100" style="background-color: rgb(18, 18, 20);">
     
     <div class="container">
 
@@ -29,9 +29,9 @@
             
             <div class="col-sm-12 col-md-6 col-lg-5 pt-30 pb-30">
                 
-                <div class="card bg-white border-0 shadow p-3">
+                <div class="card bg-dark text-primary shadow-lg p-3">
                     
-                    <div class="card-header bg-transparent border-0 pt-10">
+                    <div class="card-header bg-transparent border-0 pt-20">
                         <h4 class="text-center">Entre na sua conta</h4>
                     </div>
                     <div class="card-body border-0">
@@ -40,11 +40,11 @@
                             {% csrf_token %}
                             
                             <div class="form-floating mb-3">
-                                {% render_field form.username class+="form-control form-control-lg " placeholder="Usuário" %}
+                                {% render_field form.username class+="form-control form-control-lg border border-primary bg-dark text-light" placeholder="Usuário" %}
                                 <label for="floatingInput">Usuário</label>
                             </div>
                             <div class="form-floating mb-4">
-                                {% render_field form.password class+="form-control form-control-lg " placeholder="Senha" %}
+                                {% render_field form.password class+="form-control form-control-lg border border-primary bg-dark text-light" placeholder="Senha" %}
                                 <label for="floatingPassword">Senha</label>
                             </div>
 
