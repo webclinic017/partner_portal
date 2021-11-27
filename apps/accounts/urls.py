@@ -15,6 +15,7 @@ urlpatterns = [
     path('accounts/api-technobox/', include(routers)),
     # profile
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('financial/', FinancialDashboardView.as_view(), name='financial'),
     path('monitor-network/', MonitorNetworkDashboardView.as_view(), name='monitor_network_dashboard'),
     path('monitor-network/<int:pk>/detail/', MonitorNetworkDetailView.as_view(), name='monitor_network_detail'),
     path('customer-user/', CustomerUserListView.as_view(), name='customeruser_list'),

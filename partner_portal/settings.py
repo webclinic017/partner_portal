@@ -16,7 +16,7 @@ INSTALLED_APPS = [
     # my apps
     'apps.accounts.apps.AccountsConfig',
     'apps.core.apps.CoreConfig',
-
+    'apps.erp.apps.ErpConfig',
     # 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,6 +72,14 @@ DATABASES = {
         'HOST': config('DATABASE_HOST'),
         'PORT': '',
     },
+    'erp': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('ERP_DATABASE_NAME'),
+        'USER': config('ERP_DATABASE_USERNAME'),
+        'PASSWORD': config('ERP_DATABASE_PASSWORD'),
+        'HOST': config('ERP_DATABASE_HOST'),
+        'PORT': config('ERP_DATABASE_PORT'),
+    }
 }
 
 

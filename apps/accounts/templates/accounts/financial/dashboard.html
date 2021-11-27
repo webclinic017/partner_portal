@@ -1,0 +1,173 @@
+{% extends "base_logged.html" %}
+{% load static widget_tweaks %}
+
+{% block extra_stylesheet %}
+{% endblock %}
+
+{% block active_financial %}active border-bottom border-2 {% endblock %}
+
+
+{% block content %}
+
+<div class="container-xl px-4 py-5">
+
+    <div class="row text-light">
+
+        <div class="col-sm-12 mb-10">
+            <h2 class="text-primary">
+                Financeiro
+            </h2>
+            <p>
+                Lista de títulos em aberto <span class="mr-15 ml-15">|</span> <span class="border-bottom">{{ paginator.count }} resultados</span>
+            </p>
+        
+            
+        </div>
+
+
+        <div class="col-md-12 mb-10" hidden>
+            <div class="d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block">
+                <div class="border-0 text-secondary p-3">
+                    <div class="row">
+                        
+                        <div class="col-md-3 col-12">
+                            <div>
+                                <small class="fw-bold">NOME COMPLETO</small>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-2 col-12">
+                            <div >
+                                <small class="fw-bold">USUÁRIO</small>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="col-md-2 col-12">
+                            <div>
+                                <small class="fw-bold">SENHA</small>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2 col-12">
+                            <div>
+                                <small class="fw-bold">STATUS</small>
+                            </div>
+    
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div>
+                                <small class="fw-bold">AÇÕES</small>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        {% for item in object_list %}
+        <div class="col-md-12 mb-15" id="id-row-item-{{ item.id }}">
+            <div class="bg-dark text-light border-0 shadow-sm p-3 rounded-4">
+                <div class="row">
+                    
+                    <div class="col-md-4 col-12 mb-10">
+                        <div class="text-muted ">
+                            <small>Título</small>
+                        </div>
+                        <div>
+                            {{ item.title }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12 mb-10">
+                        <div class="text-muted ">
+                            <small>Valor (R$)</small>
+                        </div>
+                        
+                        <div>
+                            {{ item.balance }}
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-12 mb-10">
+                        <div class="text-muted ">
+                            <small>Vencimento</small>
+                        </div>
+                        
+                        <div>
+                            {{ item.expiration_date | date:"d/m/Y" }}
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        
+        
+
+        {% endfor %}
+        
+        <div class="col-lg-12 mb-15 mt-20">
+            
+            <div class="row">
+                {% if is_paginated %}
+                <div class="col-md-12 col-12 mb-3 text-muted">
+                    
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-light " >
+                        <i class="lni lni-arrow-left"></i> Anterior
+                    </a>
+                    {% else %}
+                    <button disabled class="btn btn-outline-light">
+                        <i class="lni lni-arrow-left"></i> Anterior
+                    </button>
+                    {% endif %}
+                    
+
+                    
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-light">
+                        Próximo <i class="lni lni-arrow-right"></i> 
+                    </a>
+                    {% else %}
+                    <button disabled class="btn btn-outline-light">
+                        Próximo <i class="lni lni-arrow-right"></i> 
+                    </button>
+                    {% endif %}
+
+
+                </div>
+                
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+
+{% block extra_scrypts %}
+<script>
+    
+    $('#page_filter').on('change', function () {
+        var url = $(this).val(); 
+        if (url) { 
+            window.location.href = url;
+        }
+        return false;
+    });
+    
+</script>
+{% endblock %}

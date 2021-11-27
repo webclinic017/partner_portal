@@ -3,6 +3,7 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.views.generic import TemplateView, ListView, View, CreateView, UpdateView, DetailView
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
+from apps.erp.models import FinancialReceivableTitles
 from .models import CustomerUser, MonitorNetwork
 from .forms import CustomerUserForm
 import json
@@ -156,3 +157,15 @@ class CustomerUserUpdatePassword(LoginRequiredMixin, View):
         return JsonResponse(data)
 
 
+
+class FinancialDashboardView(LoginRequiredMixin, ListView):
+    template_name = 'accounts/financial/dashboard.html'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        qs = FinancialReceivableTitles.objects.using('erp').filter(
+            p_is_receivable = 1,
+            deleted = 0,
+            contract__id = self.request.user.partneruser.partner.erp_contract_code
+        )
+        return qs

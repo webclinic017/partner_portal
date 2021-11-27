@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('apps.accounts.urls', namespace='accounts')),
     path('', RedirectView.as_view(url='/profile/'), name='home'),
     path('core/', include('apps.core.urls', namespace='core')),
+    path('erp/', include('apps.erp.urls', namespace='erp')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

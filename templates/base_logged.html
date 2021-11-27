@@ -48,6 +48,10 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link {% block active_financial %} {% endblock %} "href="{% url 'accounts:financial' %}">Financeiro</a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link  {% block active_customer %} {% endblock %} " href="{% url 'accounts:customeruser_list' %}">Oxente TV</a>
                             </li>
 
@@ -59,11 +63,11 @@
 
                         <div class="d-flex">
                             <div class="dropdown ">
-                                <button class="btn btn-default text-white dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
-                                    <span class="">
-                                        {{ request.user.partneruser.partner.title }}
-                                    </span>
-                                </button>
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ request.user.partneruser.partner.title }}
+                                </a>
+
+                                
                                 
                                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="dropdownMenuLink" style="min-width: 15rem;">
                                     <li>
