@@ -4,17 +4,19 @@
 {% block extra_stylesheet %}
 {% endblock %}
 
-{% block active_monitor_network %}active border-bottom border-2 {% endblock %}
+{% block active_monitor_network %}
+active border-bottom border-primary border-2 text-primary
+{% endblock %}
 
 
 {% block content %}
 <div class="container-xl px-4 py-5">
     <h2 class="text-primary">Mapas de monitoramento</h2>
 
-    <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-4">
+    <div class="row align-items-stretch g-4 py-4">
         
         {% for item in object_list %}
-        <div class="col">
+        <div class="col-md-6 col-sm-12">
             <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                     <h2 class="pt-2 mt-2 mb-4  lh-1 fw-bold">
@@ -27,6 +29,28 @@
                 </div>
             </div>
         </div>
+
+        {% empty %}
+
+            <div class="col-12">
+
+                <div class="card border border-dark bg-transparent text-light">
+
+                    <div class="card-body text-center py-5">
+
+                        <h4 class="mb-4">
+                            Não há mapas de monitoramento.
+                        </h4>
+
+                        <a href="{% url 'accounts:profile' %}" class="btn btn-outline-secondary">
+                            Voltar
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         {% endfor %}
 

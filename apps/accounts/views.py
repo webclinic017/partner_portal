@@ -20,11 +20,11 @@ class MonitorNetworkDashboardView(LoginRequiredMixin, ListView):
     def dispatch(self, request, *args, **kwargs):
         qs = self.get_queryset()
         try:
-            if qs.count() > 1:
-                return super().dispatch(request, *args, **kwargs)
-            else:
+            if qs.count() == 1:
                 q = qs.first()
                 return HttpResponseRedirect(reverse('accounts:monitor_network_detail', kwargs={'pk': q.pk}))
+            else:
+                return super().dispatch(request, *args, **kwargs)
         except:
             return redirect('accounts:profile')
 
